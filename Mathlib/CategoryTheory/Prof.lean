@@ -51,7 +51,6 @@ lemma Prof.actLeft_app {X Y Z : Cat} (f : Z ⟶ X) (p : Prof X Y) (x y) :
 lemma Prof.actRight_app {X Y Z : Cat} (p : Prof X Y) (f : Z ⟶ Y) (x y) :
     (p.actRight f).app x y = p.app x (f.toFunctor.obj y) := rfl
 
-
 /-- Apply a natural transformation between profunctors to a pair of objects. -/
 def Prof.homApp {X Y} {h : Prof X Y} {k : Prof X Y} (f : h ⟶ k) (c : X) (d : Y) :
     h.app c d → k.app c d := fun x ↦ f.app _ x

@@ -116,7 +116,7 @@ lemma right_unit_obj {T : Monad Cat} {X} (a : T.obj X) :
   rw [<- CategoryTheory.Cat.Hom.comp_obj, Monad.right_unit]
   rfl
 
-lemma mul_comp_obj {T : Monad Cat} {X} (a : T.obj (T.obj (T.obj X))) :
+lemma assoc_obj {T : Monad Cat} {X} (a : T.obj (T.obj (T.obj X))) :
     (T.μ.app X).toFunctor.obj ((T.μ.app (T.obj X)).toFunctor.obj a)
       = (T.μ.app X).toFunctor.obj ((T.map (T.μ.app X)).toFunctor.obj a) := by
   rw [<- CategoryTheory.Cat.Hom.comp_obj, <- Monad.assoc]
@@ -139,7 +139,7 @@ structure Operad (X : Cat) where
   comp_assoc  {a : X} {b : T.obj X} {c : T.obj (T.obj X)} {d : T.obj (T.obj (T.obj X))}
       (f : (mapProf.obj (mapProf.obj hom)).app d c) (g : (mapProf.obj hom).app c b)
       (h : hom.app b a) :
-    mul_comp_obj _ ▸
+    assoc_obj _ ▸
       comp.appL ((T.μ.app _).toFunctor.obj d) ((T.μ.app _).toFunctor.obj c) a
         (homApp (μ_prof hom) d c f)
         (comp.app g h)
