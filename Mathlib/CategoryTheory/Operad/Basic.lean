@@ -124,8 +124,6 @@ lemma assoc_obj {T : Monad Cat} {X} (a : T.obj (T.obj (T.obj X))) :
 
 variable (T : Monad Cat) [MonadProf T]
 
-abbrev Signature (X : Cat) := Prof (T.obj X) X
-
 open Prof FunctorProf MonadProf
 
 structure Operad (X : Cat) where
